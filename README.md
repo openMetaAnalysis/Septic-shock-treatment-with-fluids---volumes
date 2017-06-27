@@ -30,14 +30,14 @@ The meta-regression for the primary outcomes are below. Additional [meta-regress
 References:
 ----------------------------------
 ### Systematic review(s)
-####Most recent review(s) at time of last revision of this repository
+#### Most recent review(s) at time of last revision of this repository
 1. Annane D, Bellissant E, Bollaert PE, Briegel J, Keh D, Kupfer Y. Corticosteroids for treating sepsis. Cochrane Database Syst Rev. 2015 Dec 3;(12):CD002243. doi: 10.1002/14651858.CD002243.pub3[10.1002/14651858.CD002243.pub3](http://dx.doi.org/10.1002/14651858.CD002243.pub3). PMID: [26633262](http://pubmed.gov/26633262)
 
 ### Randomized controlled trials that are more recent
 1. 1: Keh D, Trips E, Marx G, Wirtz SP, Abduljawwad E, Bercker S, et al; SepNet–Critical Care Trials Group.. Effect of Hydrocortisone on Development of Shock Among Patients With Severe Sepsis: The HYPRESS Randomized Clinical Trial. JAMA. 2016 Nov 1;316(17):1775-1785. doi: [10.1001/jama.2016.14799](http://dx.doi.org/10.1001/jama.2016.14799). PMID: [27695824](http://pubmed.gov/27695824).
 
 #### New study(s) undergoing review
-None
+1. Lv QQ, Gu XH, Chen QH, Yu JQ, Zheng RQ. Early initiation of low-dose hydrocortisone treatment for septic shock in adults: A randomized clinical trial. Am J Emerg Med. 2017 Jun 5. pii: S0735-6757(17)30444-8. doi: 10.1016/j.ajem.2017.06.004. PMID: [28615145](http://pubmed.gov/28615145)
 
 #### New study(s) *excluded* 
 None
