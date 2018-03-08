@@ -1,4 +1,4 @@
-# Corticosteroids for sepsis
+# Sepsis treatment with corticosteroids
 
 A living systematic review
 
@@ -13,19 +13,19 @@ This repository is a limited review and contains outcomes data only without PICO
 See [methods](http://openmetaanalysis.github.io/methods.html) for details.
 
 **Results:** Details of the studies included are in the:
-* [Description of studies (PICO table)](../../tree/master/study-details/pico-table.md) (not available)
-* [Risk of bias assessment](../../tree/master/study-details/risk-of-bias.md) (not available)
-* [Forest plots](../../tree/master/forest-plots) ([source data](../../tree/master/data))
-* [Meta-regressions](../../tree/master/metaregression) ([source data](../../tree/master/data))
-* [Reconciliation of conclusions and trials included with prior meta-analyses](../../tree/master/reconcilation-tables) (not available)
+* [Description of studies (PICO table)](files/study-details/pico-table.md) (not available)
+* [Risk of bias assessment](files//study-details/risk-of-bias.md) (not available)
+* [Forest plots](files//forest-plots) ([source data](files/data))
+* [Meta-regressions](files//metaregression) ([source data](files/data))
+* [Reconciliation of conclusions and trials included with prior meta-analyses](files/reconcilation-tables) (not available)
 
-The forest plot for the primary outcomes are below. Additional [forest plots](../../tree/master/forest-plots) of secondary analyses may be available. 
+The forest plot for the primary outcomes are below. Additional [forest plots](files/forest-plots) of secondary analyses may be available. 
 
-![Principle results for benefit](https://raw.githubusercontent.com/openMetaAnalysis/Corticosteroids-for-sepsis/master/forest-plots/Outcome-Primary.png "Principle results for benefit]")
+![Principle results for benefit](files/forest-plots/Outcome-Primary.png "Principle results for benefit]")
 
-The meta-regression for the primary outcomes are below. Additional [meta-regressions](../../tree/master/metaregression) of secondary analyses may be available. 
+The meta-regression for the primary outcomes are below. Additional [meta-regressions](files/metaregression) of secondary analyses may be available. 
 
-![Principle results for benefit](https://raw.githubusercontent.com/openMetaAnalysis/Corticosteroids-for-sepsis/master/metaregression/Outcome-Primary.png "Principle results for benefit]")
+![Principle results for benefit](files/metaregression/Outcome-Primary.png "Principle results for benefit]")
 
 References:
 ----------------------------------
