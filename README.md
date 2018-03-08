@@ -1,10 +1,10 @@
-# Sepsis treatment with corticosteroids
+# Sepsis treatment and fluid type
 
 A living systematic review
 
-Short url: http://openmetaanalysis.github.io/sepsis-steroids
+Short url: http://openmetaanalysis.github.io/sepsis-fluid-type
 
-**Clinical summary:** This meta-analysis suggests that low dose corticosteroids in patients with septic shock who are hypotensive despite pressors *may be* effective at reducing mortality. While the Cochrane Collaboration (citation below) found significant benefit in the subgroup of patients iwht septic shock, the Cochrane used Mantel-Haenszel fixed estimator. This method may be too optimistic because the heterogenteity as measured by I2 was '[moderate](http://handbook.cochrane.org/chapter_9/9_5_2_identifying_and_measuring_heterogeneity.htm)' at 57%. In this setting the Knapp-Hartung estimator may be better.(PMID: [24727843](https://pubmed.gov/24727843) )
+**Clinical summary:** This meta-analysis suggests that ...under construction... The heterogenteity as measured by I2 was '[moderate](http://handbook.cochrane.org/chapter_9/9_5_2_identifying_and_measuring_heterogeneity.htm)' at 57%.
 
 [Keep current with this topic](Keep-up.md)
 
@@ -33,13 +33,14 @@ References:
 ----------------------------------
 ### Systematic review(s)
 #### Most recent review(s) at time of last revision of this repository
-1. Annane D, Bellissant E, Bollaert PE, Briegel J, Keh D, Kupfer Y. Corticosteroids for treating sepsis. Cochrane Database Syst Rev. 2015 Dec 3;(12):CD002243. doi: 10.1002/14651858.CD002243.pub3[10.1002/14651858.CD002243.pub3](http://dx.doi.org/10.1002/14651858.CD002243.pub3). PMID: [26633262](http://pubmed.gov/26633262)
+1. 
 
 ### Randomized controlled trials that are more recent
-1. 1: Keh D, Trips E, Marx G, Wirtz SP, Abduljawwad E, Bercker S, et al; SepNet–Critical Care Trials Group.. Effect of Hydrocortisone on Development of Shock Among Patients With Severe Sepsis: The HYPRESS Randomized Clinical Trial. JAMA. 2016 Nov 1;316(17):1775-1785. doi: [10.1001/jama.2016.14799](http://dx.doi.org/10.1001/jama.2016.14799). PMID: [27695824](http://pubmed.gov/27695824).
+
 
 #### New study(s) undergoing review
-1. Lv QQ, Gu XH, Chen QH, Yu JQ, Zheng RQ. Early initiation of low-dose hydrocortisone treatment for septic shock in adults: A randomized clinical trial. Am J Emerg Med. 2017 Jun 5. pii: S0735-6757(17)30444-8. doi: 10.1016/j.ajem.2017.06.004. PMID: [28615145](http://pubmed.gov/28615145)
+1. Self WH, Semler MW, Wanderer JP, Wang L, Byrne DW, Collins SP, Slovis CM, Lindsell CJ, Ehrenfeld JM, Siew ED, Shaw AD, Bernard GR, Rice TW; SALT-ED Investigators. Balanced Crystalloids versus Saline in Noncritically Ill Adults. N Engl J Med. 2018 Mar 1;378(9):819-828. doi: 10.1056/NEJMoa1711586. Epub 2018 Feb  27. PMID: [29485926](http://pubmed.gov/29485926)
+2. Semler MW, Self WH, Wanderer JP, Ehrenfeld JM, Wang L, Byrne DW, Stollings JL, Kumar AB, Hughes CG, Hernandez A, Guillamondegui OD, May AK, Weavind L, Casey JD, Siew ED, Shaw AD, Bernard GR, Rice TW; SMART Investigators and the Pragmatic Critical Care Research Group. Balanced Crystalloids versus Saline in Critically Ill Adults. N Engl J Med. 2018 Mar 1;378(9):829-839. doi: 10.1056/NEJMoa1711584.  Epub 2018 Feb 27. PMID: [29485925](http://pubmed.gov/29485925)
 
 #### New study(s) *excluded* 
 None
