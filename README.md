@@ -8,11 +8,9 @@ Short url: http://openmetaanalysis.github.io/sepsis-fluid-type
 
 [Keep current with this topic](Keep-up.md)
 
-**Methods overview:** This repository is an [openMetaAnalysis](https://openmetaanalysis.github.io/) that updates a previously published meta-analysis.(1) Newer studies included are listed in the references below. Rationale for newer trials excluded may be listed at the end of the references. 
-
-This repository is a limited review and contains outcomes data only without PICO and Risk of Bias Tables.  This review does not include a GRADE Profile or Summary of Findings Table.
-
-See [methods](http://openmetaanalysis.github.io/methods.html) for details.
+**Methods overview:** This repository is an [openMetaAnalysis](https://openmetaanalysis.github.io/) that combines methods of scoping, rapid, and living systematic reviews.  This analysis updates one or more previously published review(s).(1) A comparison of studies include in this review compared to prior reviews are in the table, [reconciliation of trials included with prior meta-analyses/](files/reconciliation-tables/Reconciliation%20of%20studies.pdf). Newer studies included are listed in the references below. Rationale for newer trials excluded may be listed at the end of the references. 
+* [Methods](http://openmetaanalysis.github.io/methods.html) for openMetaAnalysis
+* [Evidence search](files/searching/evidence-search.md) for this review
 
 **Results:** Details of the studies included are in the:
 * [Description of studies (PICO table)](files/study-details/pico-table.md) (not available)
