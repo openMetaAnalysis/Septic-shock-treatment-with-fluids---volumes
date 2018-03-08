@@ -37,6 +37,13 @@ References:
 
 ### Randomized controlled trials that are more recent
 
+### Randomized controlled trials included
+1. Self WH, Semler MW, Wanderer JP, Wang L, Byrne DW, Collins SP, Slovis CM, Lindsell CJ, Ehrenfeld JM, Siew ED, Shaw AD, Bernard GR, Rice TW; SALT-ED Investigators. Balanced Crystalloids versus Saline in Noncritically Ill Adults. N Engl J Med. 2018 Mar 1;378(9):819-828. doi: 10.1056/NEJMoa1711586. Epub 2018 Feb  27. PubMed PMID: [29485926](http://pubmed.gov/29485926)
+2. Semler MW, Self WH, Wanderer JP, Ehrenfeld JM, Wang L, Byrne DW, Stollings JL, Kumar AB, Hughes CG, Hernandez A, Guillamondegui OD, May AK, Weavind L, Casey JD, Siew ED, Shaw AD, Bernard GR, Rice TW; SMART Investigators and the Pragmatic Critical Care Research Group. Balanced Crystalloids versus Saline in Critically Ill Adults. N Engl J Med. 2018 Mar 1;378(9):829-839. doi: 10.1056/NEJMoa1711584. Epub 2018 Feb 27. PubMed PMID: [29485925](http://pubmed.gov/29485925)
+3. Semler MW, Wanderer JP, Ehrenfeld JM, Stollings JL, Self WH, Siew ED, Wang L,  Byrne DW, Shaw AD, Bernard GR, Rice TW; SALT Investigators * and the Pragmatic Critical Care Research Group; SALT Investigators. Balanced Crystalloids versus Saline in the Intensive Care Unit. The SALT Randomized Trial. Am J Respir Crit Care Med. 2017 May 15;195(10):1362-1372. doi: 10.1164/rccm.201607-1345OC. PubMed PMID: [27749094](http://pubmed.gov/27749094)
+4. Verma B, Luethi N, Cioccari L, Lloyd-Donald P, Crisman M, Eastwood G, Orford N, French C, Bellomo R, Martensson J. A multicentre randomised controlled pilot study of fluid resuscitation with saline or Plasma-Lyte 148 in critically ill patients. Crit Care Resusc. 2016 Sep;18(3):205-12. PubMed PMID: [27604335](http://pubmed.gov/27604335)
+5. Young P, Bailey M, Beasley R, Henderson S, Mackle D, McArthur C, McGuinness S, Mehrtens J, Myburgh J, Psirides A, Reddy S, Bellomo R; SPLIT Investigators; ANZICS CTG. Effect of a Buffered Crystalloid Solution vs Saline on Acute Kidney Injury Among Patients in the Intensive Care Unit: The SPLIT Randomized Clinical Trial. JAMA. 2015 Oct 27;314(16):1701-10. doi: 10.1001/jama.2015.12334. Erratum
+in: JAMA. 2015 Dec 15;314(23):2570. PubMed PMID: [26444692](http://pubmed.gov/26444692)
 
 #### New study(s) undergoing review
 1. Self WH, Semler MW, Wanderer JP, Wang L, Byrne DW, Collins SP, Slovis CM, Lindsell CJ, Ehrenfeld JM, Siew ED, Shaw AD, Bernard GR, Rice TW; SALT-ED Investigators. Balanced Crystalloids versus Saline in Noncritically Ill Adults. N Engl J Med. 2018 Mar 1;378(9):819-828. doi: 10.1056/NEJMoa1711586. Epub 2018 Feb  27. PMID: [29485926](http://pubmed.gov/29485926)
