@@ -4,20 +4,21 @@ A living systematic review
 
 Short url: http://openmetaanalysis.github.io/sepsis-fluid-type
 
-**Clinical summary:** This meta-analysis suggests that ...under construction... The heterogenteity as measured by I2 was '[moderate](http://handbook.cochrane.org/chapter_9/9_5_2_identifying_and_measuring_heterogeneity.htm)' at 57%.
+**Clinical summary:** This meta-analysis suggests that balanced Crystalloids reduce mortality. The heterogenteity as measured by I<sup>2</sup> was '[might not be important](http://handbook-5-1.cochrane.org/chapter_9/9_5_2_identifying_and_measuring_heterogeneity.htm)' at 0%.
 
-[Keep current with this topic](Keep-up.md)
+* [Reconciliation of conclusions with prior meta-analyses](files/reconciliation-tables/Reconciliation%20of%20conclusions.pdf) (under construction)
+* [Keep current with this topic](files/searching/Keep-up.md) (under construction)
 
-**Methods overview:** This repository is an [openMetaAnalysis](https://openmetaanalysis.github.io/) that combines methods of scoping, rapid, and living systematic reviews.  This analysis updates one or more previously published review(s).(1) A comparison of studies include in this review compared to prior reviews are in the table, [reconciliation of trials included with prior meta-analyses/](files/reconciliation-tables/Reconciliation%20of%20studies.pdf). Newer studies included are listed in the references below. Rationale for newer trials excluded may be listed at the end of the references. 
+**Methods overview:** This repository is an [openMetaAnalysis](https://openmetaanalysis.github.io/) that combines methods of scoping, rapid, and living systematic reviews.  This analysis updates one or more previously published review(s) below. A comparison of studies included in this review compared to prior reviews are in the table, [reconciliation of trials included with prior meta-analyses/](files/reconciliation-tables/Reconciliation%20of%20studies.pdf). Newer studies included are listed in the references below. Rationale for newer trials excluded may be listed at the end of the references. 
 * [Methods](http://openmetaanalysis.github.io/methods.html) for openMetaAnalysis
-* [Evidence search](files/searching/evidence-search.md) for this review
+* [Evidence search](files/searching/evidence-search.md) for this review (under construction)
 
 **Results:** Details of the studies included are in the:
-* [Description of studies (PICO table)](files/study-details/pico-table.md) (not available)
-* [Risk of bias assessment](files//study-details/risk-of-bias.md) (not available)
+* [Description of studies (PICO table)](files/study-details/pico-table.md) (under construction)
+* [Risk of bias assessment](files//study-details/risk-of-bias.md) (under construction)
 * [Forest plots](files//forest-plots) ([source data](files/data))
 * [Meta-regressions](files//metaregression) ([source data](files/data))
-* [Reconciliation of conclusions and trials included with prior meta-analyses](files/reconcilation-tables) (not available)
+* [Reconciliation of conclusions and trials included with prior meta-analyses](files/reconcilation-tables) (under construction)
 
 The forest plot for the primary outcomes are below. Additional [forest plots](files/forest-plots) of secondary analyses may be available. 
 
