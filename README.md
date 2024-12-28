@@ -24,7 +24,7 @@ The forest plot for the primary outcomes are below. Additional [forest plots](fi
 
 ![Principle results for benefit](files/forest-plots/Outcome-Primary.png "Principle results for benefit]")
 
-The arrows plot for the primary outcomes are below. Additional [arrows-plots](files/arrows-plots) of secondary analyses may be available. 
+The arrows plot for the primary outcomes are below. Additional [arrows-plots](files/arrows-plots), including a colorized version, are available. 
 ![Principle results](files/arrows-plots/Outcome-Primary.png)
 
 <!--
