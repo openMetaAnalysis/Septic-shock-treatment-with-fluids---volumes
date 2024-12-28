@@ -1,7 +1,7 @@
 # This file is available at https://github.com/ebmgt/NHS-Religion/
 # Author:rbadgett@kumc.edu
 # Permission: GNU GPLv3 https://choosealicense.com/licenses/gpl-3.0/
-# Last edited 2024-12-13
+# Last edited 2024-12-21
 
 file.filter   <- matrix(c("Cancel this","ZZZZZ.txt"),byrow=TRUE,ncol=2)
 choose.files(filters= file.filter, caption="Cancel. This is a work around to avoid trouble with new version of R Studio")
@@ -9,11 +9,21 @@ choose.files(filters= file.filter, caption="Cancel. This is a work around to avo
 library(tcltk) # For interactions and troubleshooting, part of base package so no install needed.
 
 #== Startup ======
+#* Set working directory -----
+if (Sys.getenv("RSTUDIO") != "1"){
+  args <- commandArgs(trailingOnly = FALSE)
+  script_path <- sub("--file=", "", args[grep("--file=", args)])  
+  script_path <- dirname(script_path)
+  setwd(script_path)
+}else{
+  setwd(dirname(rstudioapi::getSourceEditorContext()$path))
+}
+getwd()
+
 #* Troubleshooting -----
 #options(error = NULL)   # Default
 #options(warn = 2)       # Converts warnings into errors
 options(warn = 2, error = browser)
-options(error = recover) # This will provide a menu showing the call stack, and you can choose which environment to inspect.
 options(error = recover) # This will provide a menu showing the call stack, and you can choose which environment to inspect.
 typeof('bob')
 class('bob') # Better
@@ -44,19 +54,6 @@ Palette_KU <- c("KUBlue" = "#0022B4", "KUSkyBlue" = "#6DC6E7", "KUCrimson" = "#e
 # Section symbol \u00A7
 # Double Vertical Line \u2016 "\u2016\u2016"
 # Para    \B6 or \u0086 or \u204a or \u204b
-
-# Set working directory -----
-if (Sys.getenv("RSTUDIO") != "1"){
-  args <- commandArgs(trailingOnly = FALSE)
-  script_path <- sub("--file=", "", args[grep("--file=", args)])  
-  script_path <- dirname(script_path)
-  setwd(script_path)
-}else{
-  setwd(dirname(rstudioapi::getSourceEditorContext()$path))
-}
-#getwd()
-# Did the script load? -----
-#tk_messageBox(type = "ok", paste('1. ', 'R has loaded.\n\nWorking directory:\n', getwd(), sepo=''), caption = "Hello")
 
 ## Functions -----
 `%notin%` <- Negate(`%in%`)
@@ -185,14 +182,14 @@ meta1 <- metabin(experimental.events, experimental.total, control.events, experi
 meta1$data$control.rate <- paste(sprintf(100*meta1$data$.event.c/meta1$data$.n.c, fmt='%#.1f'),'%', sep="") 
 
 ##* Forest plot ------
-
+dev.off()
 par(mar=c(5.1, 4.1, 4.1, 1)) # (bottom, left, top, right)
 
 analyticmethod = "Random effects model (Hartung-Knapp)"
 meta::forest (meta1, sortvalue = data_sepsis$Year, 
               #xlim=c(0,100), 
-              leftcols = c("studlab", "Restrictive.fluids", "control.rate"),
-              leftlabs = c("Study","Restrictive fluids\n(ml/kg)", "Mortality\n(control group)"),
+              leftcols = c("studlab", "Liberal.fluids","Restrictive.fluids", "control.rate"),
+              leftlabs = c("Study"," Fluids\nLiberal","(ml/kg) \nRestrictive", "Mortality\n(Restrictive group)"),
               print.subgroup.name = FALSE,
               col.diamond="blue", col.diamond.lines="blue", title = "Sepsis", 
               fixed = FALSE, common = FALSE, random = TRUE, method.random.ci = "HK",
@@ -201,15 +198,19 @@ meta::forest (meta1, sortvalue = data_sepsis$Year,
               print.I2.ci=TRUE, print.tau2=FALSE, print.p=FALSE, 
               label.left="Favors liberal", label.right="Favors restrictive",
               text.random=analyticmethod, fs.random=12, ff.random = 1, ff.hetstat=2, fs.hetstat=12)
-grid.text("Forest plot: liberal versus restrictive fluids for septic shock", 0.5, 0.97, gp = gpar(fontsize = 14, fontface = "bold"))
+grid.text("Forest plot – More liberal versus more restrictive fluids for sepsis with fluid refractory hypotension", 0.5, 0.97, gp = gpar(fontsize = 14, fontface = "bold"))
 
 # Copyright statement -----
+if (1==2){
 grid.text('Notes:', 
           0.02, 0.125, hjust=0, gp=gpar(cex=1, font=2))
-grid.text(paste0("Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)"),
-          0.95,  0.1,    hjust=1, gp=gpar(cex=1, font=1))
+#grid.text(paste0("Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)"),
+#          0.95,  0.1,  hjust=1, gp=gpar(cex=1, font=1))
+#grid.text(paste0("Version: ", current.date(), ". Code and data available at https://openmetaanalysis.github.io/sepsis"),
+#          0.95,  0.05, hjust=1, gp=gpar(cex=1, font=1))
 grid.text(paste0("Version: ", current.date(), ". Code and data available at https://openmetaanalysis.github.io/sepsis"),
-          0.95,  0.05,    hjust=1, gp=gpar(cex=1, font=1))
+        0.95,  0.1, hjust=1, gp=gpar(cex=1, font=1))
+}
 
 #* Print -----
 plotname <- paste0("forest_plot_sepsis_-_")
@@ -217,9 +218,21 @@ function_plot_print (plotname, 1000,500)
 
 # ____________________________________ ----
 # Arrows plot ------
+#Tips for Fine-Tuning
+#angle: Default is 30. Lower values like 15 or 20 create a slimmer arrowhead.
+#length: If the arrowhead is too long or short, raise or lower the fraction in unit(..., "inches").
+#lineend & linejoin: Setting them to "round" in geom_segment() ensures smoother corners along the lines and arrow transitions.
 
+# If you haven't installed ggtext yet, run:
+# install.packages("ggtext")
+
+library(ggplot2)
+library(ggtext)
+
+#* Data grab -----
 data_arrows <- data.import
 
+#* Data process -----
 data_arrows$duration <- 1
 
 data_arrows$Study.name <- data_arrows$Study
@@ -241,164 +254,89 @@ data_arrows$y  <- data_arrows$Event_rate_con/data_arrows$duration
 attach(data_arrows)
 
 #* Plot ----------
-par(mfrow=c(1,1), oma = c(4, 0, 0, 0))
 
-topic = "Arrows plot: liberal versus restrictive fluids for septic shock"
-outcome = "overall mortality"
-biomarker = "Fluids ml/kg"
-timeframe = "90 days"
+# -- Calculate Odds Ratio and define arrow colors ------------------------------------
+data_arrows$OR <- (data_arrows$experimental.events * (data_arrows$control.total - data_arrows$control.events)) / 
+  ((data_arrows$experimental.total - data_arrows$experimental.events) * data_arrows$control.events)
 
-par(yaxt = "n")
-#Annualized
-plot(data_arrows$control_biomarker_post, data_arrows$Event_rate_con/data_arrows$duration,
-     type = "n",
-     axes = FALSE, xlab = "", ylab = "", 
-     main=topic,
-     ylim=c(0,30), xlim=c(0,100), 
-     )
-par(yaxt = "s")
-#mtext(side=3,line=3,"Aggressive treatment of diabetes.", cex=1.2,font=2, adj=0)
-axis(2,seq(0, 50, by = 10), tick = TRUE,c("0%","10%","20%","30%","40%","50%"))
-axis(1,seq(0, 100, by = 10), tick = TRUE,c(seq(0, 100, by = 10)))
-box(which="plot")
+data_arrows$arrow_color <- "black"
+#data_arrows$arrow_color <- ifelse(data_arrows$OR > 1, "red", "darkgreen")
 
-##Grid lines
-i = 0
-for(i in 0:10) # Horizontal
-{
-  abline(h=i*10, v=0, col = "gray90")
-}
-
-for(i in seq(0, 100, by = 10)) # Vertical
-{
-  abline(h=0, v=i, col = "gray90")
-}
-mtext(side=2,line=3,paste("Clinical outcome (", outcome, ")", sep=""), font=2)
-mtext(side=2,line=2,timeframe, font=1)
-# "Biomarker"
-#mtext(side=1,line=2, paste("Biomarker (", biomarker, ")", sep=""), font=2)
-# "Treatment"
-mtext(side=1,line=2, paste("Treatment (", biomarker, ")", sep=""), font=2)
-
-##Study labels
-#default
-for(i in 1: nrow(data_arrows))
-{
-  data_arrows$placement[i] <- 3
-  if (data_arrows$Study.name[i] == "EXAMINE"){data_arrows$placement[i] <- 1} 
-}
-
-for(i in 1: nrow(data_arrows))
-{  
-  #Upper right adj=c(0,0)
-  #Lower right adj=c(0,1)
-  #Upper left adj=c(1,0)
-  #Lower left adj=c(1,1)
-  if (data_arrows$placement[i] == 1)
-  {text(x=control_biomarker_post[i], y=Event_rate_con[i]/duration[i] - 0, labels=paste(Study.name[i], sep=" "), cex=0.65, pos=4, adj=c(0,0), font=1,col='black')}
-  if (data_arrows$placement[i] == 2)
-  {text(x=control_biomarker_post[i], y=Event_rate_con[i]/duration[i] - 0, labels=paste(Study.name[i], sep=" "), cex=0.65, pos=3, adj=c(0,1), font=1,col='black')}
-  if (data_arrows$placement[i] == 2.5)
-  {text(x=control_biomarker_post[i], y=Event_rate_con[i]/duration[i] - 0, labels=paste(Study.name[i], sep=" "), cex=0.65, pos=4, adj=c(0,1), font=1,col='black')}
-  if (data_arrows$placement[i] == 3)
-  {text(x=control_biomarker_post[i], y=Event_rate_con[i]/duration[i] - 0, labels=paste(Study.name[i], sep=" "), cex=0.65, pos=2, adj=c(1,0), font=1,col='black')}
-  if (data_arrows$placement[i] == 4)
-  {text(x=control_biomarker_post[i], y=Event_rate_con[i]/duration[i] - 0, labels=paste(Study.name[i], sep=" "), cex=0.65, pos=2, adj=c(1,1), font=1,col='black')}
-}  
-
-#* draw arrows from point to point -----
-#s <- seq(length(x)+1)
-
-lower_CI=meta1.summary$lower[]
-upper_CI=meta1.summary$upper
+# -- Compute "Size" and derive line thickness based on it ---------------------------
 data_arrows$Size <- data_arrows$control.total + data_arrows$experimental.total
-data_arrows$significant= (lower_CI>0 | upper_CI<0)
-n_study=nrow(data_arrows)
-data_arrows$linetype    = 1
-data_arrows$linewidth   = 1
-data_arrows$segmenttype = 0
-# 1 =solid (default), 2=dashed, 3=dotted, 4=dotdash, 5=longdash, 6=twodash
-for(i in 1: nrow(data_arrows))
-  {
-  data_arrows$linewidth[i] = 
-    (data_arrows$Size[i]^1.5)/(max(data_arrows$Size^1.5))
-  if(significant[i] == TRUE)
-    {
-    data_arrows$linetype[i]= 1 
-    data_arrows$segmenttype[i]= 1
-    }
-  else 
-  {
-    data_arrows$linetype[i]= 2 
-    data_arrows$segmenttype[i]= 3
-  }
-}
-data_arrows$linewidth
+data_arrows$linewidth <- (data_arrows$Size^1.5) / max(data_arrows$Size^1.5)
 
-# Draw the lines
-data_arrows$linewidth <- data_arrows$linewidth * 3
-data_arrows$linewidth <- ceiling(data_arrows$linewidth)
-for (i in 1:nrow(data_arrows))
-  {
-  if (data_arrows$OR[i] > 1)
-    {
-    # Studies suggesting harm
-    # Sig manifested in data_arrows$linetype[i]
-    #arrows(x2[s_OR_greater_than_one_data], y2[s_OR_greater_than_one_data],x[s_OR_greater_than_one_data],y[s_OR_greater_than_one_data], lwd=linewidth,length=0.1,col='red',lty=linetype[s_OR_greater_than_one_data])
-    segments(x2[i], y2[i],x[i],y[i], 
-             lwd=data_arrows$linewidth[i],col="red", lty=data_arrows$linetype[i])
-    arrows(
-      x[i] + (x2[i] - x[i]) * 0.98,
-      y[i] + (y2[i] - y[i]) * 0.98,
-      x2[i], y2[i],
-      lwd = data_arrows$linewidth[i],
-      length = 0.1,
-      col = "red",
-      lty = 1
+# -- Define your HTML-based footnotes as a single string with line breaks & styling --
+footnotes <- paste0(
+  "**Notes:**<br/>",
+  "1. For each study, the arrow starts with the results of the control group (restrictive)<br/>",
+  "and ends with the results of the treatment group (liberal).<br/>",
+  "2. Width of arrow shafts reflect study size.<br/>",
+  #"3. <span style='color:darkgreen;'>Green</span> arrows suggest benefit and ",
+  #"<span style='color:red;'>red</span> arrows suggest harm.<br/>",
+  "4. Dashed arrow shafts indicate nonsignificant results.<br/>",
+  "Code and data available at https: //openmetaanalysis.github.io/sepsis."
+)
+
+ggplot(
+  data_arrows,
+  aes(
+    x    = control_biomarker_post,
+    y    = Event_rate_con / duration,
+    xend = exp_biomarker_post,
+    yend = Event_rate_exp / duration
+  )
+) +
+  # 1) Draw arrowed segments with variable thickness
+  geom_segment(
+    aes(
+      color    = arrow_color,  # "red" or "darkgreen"
+      linetype = linetype,     # numeric code: 1=solid, 2=dashed
+      size     = linewidth     # thickness based on study size
+    ),
+    lineend = "round",    # round corners
+    linejoin = "round",   # round joins
+    arrow = arrow(
+      angle  = 20,                  # narrower arrowhead angle
+      length = unit(0.12, "inches"),
+      type   = "closed"             # solid (filled) triangular arrowhead
     )
-  }
-  else
-    {
-    # Studies suggesting benefit
-    # Sig manifested in data_arrows$linetype[i]
-    #arrows(x2[s_OR_less_than_one_data], y2[s_OR_less_than_one_data],x[s_OR_less_than_one_data],y[s_OR_less_than_one_data], lwd=linewidth,length=0.1,col="darkgreen", lty=linetype[s_OR_less_than_one_data])
-    segments(x2[i], y2[i],x[i],y[i], 
-           lwd=data_arrows$linewidth[i],col="darkgreen", lty=data_arrows$linetype[i])
-      arrows(
-        x[i] + (x2[i] - x[i]) * 0.98,
-        y[i] + (y2[i] - y[i]) * 0.98,
-        x2[i], y2[i],
-        lwd = data_arrows$linewidth[i],
-        length = 0.1,
-        col = "darkgreen",
-        lty = 1
-      )
-      print(data_arrows$linewidth[i])
-      }
-  }
-# 1 =solid (default), 2=dashed, 3=dotted, 4=dotdash, 5=longdash, 6=twodash
+  ) +
+  
+  # 2) Label each study to the left of the arrow start
+  geom_text(
+    aes(label = Study.name),
+    # Position text so its right edge is ~1 char to the left of arrow's start
+    nudge_x = -1,     
+    hjust = 1,        
+    color = "black",
+    size = 3
+  ) +
+  
+  # 3) Use identity for color and linetype, set the displayed thickness range
+  scale_color_identity() +
+  scale_linetype_identity() +
+  scale_size_continuous(
+    range = c(0.5, 1),  # map [min(linewidth), max(linewidth)] to [0.5, 1] on screen
+    guide = FALSE       # hide size legend
+  ) +
+  
+  # 4) X/Y-axis scales
+  scale_x_continuous(breaks = seq(0, 100, 10), limits = c(0, 100)) +
+  scale_y_continuous(breaks = seq(0, 30, 10),  limits = c(0, 30)) +
+  
+  # 5) Title, axes, footnotes (using ggtext’s element_markdown)
+  labs(
+    title   = "Arrows plot: liberal versus restrictive fluids for septic shock",
+    x       = "Treatment (fluids ml/kg)",
+    y       = "Outcome (overall mortality)",
+    caption = footnotes
+  ) +
+  theme_bw() +
+  theme(
+    plot.caption = element_markdown(hjust = 0)  # left-align footnotes
+  )
 
-#Notes ------
-mtext(side=1,line=3,cex=0.9,adj=0,"Notes:", font=2)
-mtext(side=1,line=5,cex=0.9,adj=0, "1. For each study, the arrow starts with the results of the control group (restrictive) and\nends with the results of the treatment group (liberal).", font=1)
-mtext(side=1,line=6,cex=0.9,adj=0, "2. Width of arrows reflect study size.", font=1)
-mtext(side=1,line=7,cex=0.9,adj=0, "3. Solid arrows indicate statistically significant change in clinical outcome.", font=1)
-
-#mtext(side=1,line=8,cex=0.9,adj=0, "2. Green arrows suggest benefit and red arrows suggest harm.", font=1)
-# Write the beginning of the sentence
-mtext(side=1, line=8, cex=0.9, adj=0, font=1, "4. ")
-# Add the word "Green" in green
-mtext(side=1, line=8, cex=0.9, font=1, "Green", col="darkgreen", adj=0.03)
-# Add the text after "Green"
-mtext(side=1, line=8, cex=0.9, font=1, " arrows suggest benefit and ", adj=0.15)
-# Add the word "red" in red
-mtext(side=1, line=8, cex=0.9, font=1, "red", col="red", adj=0.44)
-# Finish the sentence
-mtext(side=1, line=8, cex=0.9, font=1, " arrows suggest harm.", adj=0.62)
-
-#mtext(side=1,line=8,cex=0.9,adj=0,"3. P-best is the p-value assuming a relative risk reduction from treatment of 0.1. P-worst is \nthe P-value assuming that the\nrelative benefit of treat is 1.0", font=1)
-
-#* Print -----
-plotname <- paste0("arrows_plot_sepsis_-_")
-function_plot_print (plotname, 680,500)
+plotname <- paste0("arrows_plot_sepsis_-_", Sys.Date(),".tiff")
+ggsave(filename = plotname, path = getwd(), width = 6, height = 4, units = 'in', device='tiff', dpi=800)
 
